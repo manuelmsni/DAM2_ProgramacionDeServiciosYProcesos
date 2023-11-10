@@ -16,7 +16,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ej1_GUI gui1 = new ej1_GUI();
+        Indice gui1 = new Indice();
         gui1.show();
     }
     
