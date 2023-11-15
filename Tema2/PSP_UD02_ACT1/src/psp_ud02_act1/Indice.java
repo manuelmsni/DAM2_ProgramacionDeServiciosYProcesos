@@ -8,9 +8,13 @@ import psp_ud02_act1.ej1.Ej1_GUI;
 import psp_ud02_act1.ej2.Ej2;
 import psp_ud02_act1.ej3.Ej3_GUI;
 import psp_ud02_act1.ej4.Ej4_GUI;
+import psp_ud02_act1.ej5.Ej5_GUI;
 import psp_ud02_act1.ej6.Ej6_GUI;
 import psp_ud02_act1.ej7.Ej7;
 import psp_ud02_act1.ej8.Ej8;
+import psp_ud02_act1.ej9.Ej9;
+import psp_ud02_act1.ej_10.Ej10;
+import psp_ud02_act1.ej_11.Ej11;
 
 
 
@@ -45,6 +49,9 @@ public class Indice extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
+        jButton11 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +90,11 @@ public class Indice extends javax.swing.JFrame {
         jPanel1.add(jButton4);
 
         jButton5.setText("Ej5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5);
 
         jButton6.setText("Ej6");
@@ -108,6 +120,30 @@ public class Indice extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton8);
+
+        jButton9.setText("Ej9");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9);
+
+        jButton10.setText("Ej10");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton10);
+
+        jButton11.setText("Ej11");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton11);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -153,6 +189,27 @@ public class Indice extends javax.swing.JFrame {
         Ej8.main(null);
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Ej9.main(null);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        Ej10.main(null);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        Ej11.main(null);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        Ej5_GUI gui5 = new Ej5_GUI();
+        gui5.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,6 +247,8 @@ public class Indice extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -197,6 +256,7 @@ public class Indice extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
