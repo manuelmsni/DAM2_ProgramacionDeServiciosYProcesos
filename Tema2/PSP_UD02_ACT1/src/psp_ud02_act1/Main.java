@@ -4,7 +4,7 @@
  */
 package psp_ud02_act1;
 
-import psp_ud02_act1.actividad1.ej1_GUI;
+import psp_ud02_act1.ej1.Ej1_GUI;
 
 /**
  *

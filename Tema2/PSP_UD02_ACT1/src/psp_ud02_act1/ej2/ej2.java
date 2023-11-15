@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  *
  * @author Vespertino
  */
-public class ej2 {
+public class Ej2 {
     public static void main(String[] args){
         try {
             // Lanzar el proceso para obtener la información de IP
