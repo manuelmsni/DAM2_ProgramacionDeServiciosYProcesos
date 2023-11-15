@@ -10,6 +10,7 @@ import psp_ud02_act1.ej3.Ej3_GUI;
 import psp_ud02_act1.ej4.Ej4_GUI;
 import psp_ud02_act1.ej6.Ej6_GUI;
 import psp_ud02_act1.ej7.Ej7;
+import psp_ud02_act1.ej8.Ej8;
 
 
 
@@ -43,6 +44,7 @@ public class Indice extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +101,14 @@ public class Indice extends javax.swing.JFrame {
         });
         jPanel1.add(jButton7);
 
+        jButton8.setText("Ej8");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8);
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -137,6 +147,11 @@ public class Indice extends javax.swing.JFrame {
         // TODO add your handling code here:
         Ej7.main(null);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        Ej8.main(null);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +196,7 @@ public class Indice extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
