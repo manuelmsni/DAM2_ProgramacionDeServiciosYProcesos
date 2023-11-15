@@ -4,7 +4,12 @@
  */
 package psp_ud02_act1.ej8;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -12,60 +17,47 @@ import java.io.IOException;
  */
 public class Ej8 {
     
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        
+        long miPid = ProcessHandle.current().pid();
+        long padrePid;
+
+        System.out.println("Soy el proceso ABUELO " + miPid);
+  
+        Process padre = iniciarPadre(miPid);
+        
+        // Obtener la salida del proceso
+        InputStream inputStream = padre.getInputStream();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        
+        padrePid = padre.pid();
+        
         try {
-            // Proceso abuelo
-            procesoAbuelo();
-
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+            padre.waitFor();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
         }
+        
+        // Leer y mostrar la salida del proceso
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        
+        System.out.println("Soy el proceso ABUELO " + miPid + "; Mi hijo: " + padrePid + " terminó.");
     }
-
-    private static void procesoAbuelo() throws IOException, InterruptedException {
-        int abueloPid = obtenerPid();
-        System.out.println("Soy el proceso ABUELO: " + abueloPid);
-
-        // Llamar al método para crear y ejecutar el proceso hijo
-        Process hijoProcess = procesoHijo();
-        hijoProcess.waitFor(); // Esperar a que el proceso hijo termine
-
-        System.out.println("Soy el proceso ABUELO: " + abueloPid + ", Mi HIJO: " + hijoProcess.exitValue() + " terminó.");
-    }
-
-    public static Process procesoHijo() throws IOException, InterruptedException {
-        int hijoPid = obtenerPid();
-        int abueloPid = obtenerPadrePid();
-
-        // Proceso hijo
-        System.out.println("Soy el proceso HIJO " + hijoPid + ", Mi padre es: " + abueloPid);
-
-        // Llamar al método para crear y ejecutar el proceso nieto
-        Process nietoProcess = procesoNieto();
-        nietoProcess.waitFor(); // Esperar a que el proceso nieto termine
-
-        System.out.println("Soy el proceso HIJO " + hijoPid + ", Mi HIJO: " + nietoProcess.exitValue() + " terminó.");
-
-        return nietoProcess;
-    }
-
-    public static Process procesoNieto() throws IOException, InterruptedException {
-        int nietoPid = obtenerPid();
-        int padrePid = obtenerPadrePid();
-
-        // Proceso nieto
-        System.out.println("Soy el proceso NIETO " + nietoPid + "; Mi padre es= " + padrePid);
-
-        // Crear un proceso nieto simple (puedes personalizar esto según tus necesidades)
-        ProcessBuilder pb = new ProcessBuilder("cmd", "/c", "echo Hola desde el proceso nieto");
-        return pb.start();
-    }
-
-    private static int obtenerPid() {
-        return Long.valueOf(ProcessHandle.current().pid()).intValue();
-    }
-
-    private static int obtenerPadrePid() {
-        return Long.valueOf(ProcessHandle.current().parent().map(ProcessHandle::pid).orElse(-1L)).intValue();
-    }
+    
+    private static Process iniciarPadre(long miPid){
+        try {
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "procesoPadre.jar", String.valueOf(miPid));
+            return pb.start();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    } 
 }
