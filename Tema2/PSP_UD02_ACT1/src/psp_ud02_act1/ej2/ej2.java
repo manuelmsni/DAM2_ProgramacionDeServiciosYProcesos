@@ -16,22 +16,20 @@ import java.io.InputStreamReader;
 public class Ej2 {
     public static void main(String[] args){
         try {
-            // Lanzar el proceso para obtener la información de IP
+            
             String[] input = {"ipconfig"};
-            Process process = Runtime.getRuntime().exec(input);
+            Process process = Runtime.getRuntime().exec(input); // Lanza el proceso para obtener la información de IP
 
-            // Obtener la salida del proceso
-            InputStream inputStream = process.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            
+            InputStream inputStream = process.getInputStream(); // Obtiene el flujo de salida del proceso
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); // 
 
-            // Leer y mostrar la salida del proceso
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = reader.readLine()) != null) { // Lee y muestra la salida del proceso
                 System.out.println(line);
             }
 
-            // Esperar a que el proceso termine
-            process.waitFor();
+            process.waitFor(); // Espera a que termine el proceso
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
