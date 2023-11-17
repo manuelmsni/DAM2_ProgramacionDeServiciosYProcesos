@@ -21,11 +21,13 @@ public class Ej1_GUI extends javax.swing.JFrame {
         initComponents();
         initCustom();
     }
+    
     private void initCustom(){
         initNotepadButton();
         initChromeButton();
         initAppButton();
     }
+    
     private void initNotepadButton(){
         notepadButton.addActionListener((ActionEvent e) -> {
             try {
@@ -36,6 +38,7 @@ public class Ej1_GUI extends javax.swing.JFrame {
             }
         });
     }
+    
     private void initChromeButton(){
         chromeButton.addActionListener((ActionEvent e) -> {
             try {
@@ -46,6 +49,7 @@ public class Ej1_GUI extends javax.swing.JFrame {
             }
         });
     }
+    
     private void initAppButton(){
         appButton.addActionListener((ActionEvent e) -> {
             try {

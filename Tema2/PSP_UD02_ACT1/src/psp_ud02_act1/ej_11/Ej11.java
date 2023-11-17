@@ -55,6 +55,7 @@ public class Ej11 {
             System.out.println("Error al ejecutar la instrucción: " + instruccion);
         }
     }
+    
     private static void ejecutarProcesoForma2(String instruccion) {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(instruccion.split("\\s+"));
@@ -93,12 +94,13 @@ public class Ej11 {
             e.printStackTrace();
         }
     }
+    
     public static void generarArchivoPrueba() {
         String[] instrucciones = {
             "cmd /c echo Hola Mundo",
             "mondongo",
             "cmd /c dir",
-            "java -version"
+            "cmd /c java -version"
         };
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("instrucciones.txt"))) {

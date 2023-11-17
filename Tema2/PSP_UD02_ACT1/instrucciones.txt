@@ -1,4 +1,4 @@
 cmd /c echo Hola Mundo
 mondongo
 cmd /c dir
-java -version
+cmd /c java -version
