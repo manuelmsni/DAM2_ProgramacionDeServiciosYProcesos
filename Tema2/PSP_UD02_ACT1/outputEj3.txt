@@ -1,24 +1,22 @@
- El volumen de la unidad C es Windows portable
- El n£mero de serie del volumen es: 7608-1648
+ El volumen de la unidad D es HDD (Datos)
+ El n£mero de serie del volumen es: 7AAD-6956
 
- Directorio de C:\
+ Directorio de D:\Proyectos\2§Dam\DAM2_ProgramacionDeServiciosYProcesos\Tema2\PSP_UD02_ACT1
 
-11/11/2023  21:23    <DIR>          $WINDOWS.~BT
-23/02/2023  01:34            34.494 autorun.ico
-23/02/2023  01:34               240 autorun.inf
-14/07/2023  01:32    <DIR>          EADesktopDev
-11/11/2023  21:58    <DIR>          ESD
-14/11/2023  22:16    <DIR>          Intel
-15/03/2023  02:39    <DIR>          Microsoft
-07/12/2019  10:14    <DIR>          PerfLogs
-14/11/2023  23:57    <DIR>          Program Files
-11/11/2023  21:16    <DIR>          Program Files (x86)
-10/04/2023  21:52    <DIR>          Python311
-25/02/2023  02:29    <DIR>          Riot Games
-25/02/2023  03:39    <DIR>          temp
-24/02/2023  17:59    <DIR>          Users
-17/10/2023  13:59    <DIR>          Windows
-11/06/2023  13:55    <DIR>          xampp
-16/09/2023  18:04    <DIR>          XboxGames
-               2 archivos         34.734 bytes
-              15 dirs  609.156.751.360 bytes libres
+17/11/2023  08:14    <DIR>          .
+17/11/2023  08:14    <DIR>          ..
+17/11/2023  08:35    <DIR>          build
+15/11/2023  04:25             3.624 build.xml
+17/11/2023  08:14    <DIR>          dist
+17/11/2023  08:27                61 instrucciones.txt
+15/11/2023  04:25                85 manifest.mf
+15/11/2023  04:41    <DIR>          nbproject
+15/11/2023  04:25             5.615 Output.jar
+17/11/2023  08:31               967 outputEj3.txt
+17/11/2023  07:39             1.921 procesoNieto.jar
+17/11/2023  07:39             3.360 procesoPadre.jar
+15/11/2023  04:25    <DIR>          src
+17/11/2023  07:55             6.806 SVCHOST.TXT
+15/11/2023  04:52    <DIR>          test
+               8 archivos         22.439 bytes
+               7 dirs  458.882.408.448 bytes libres

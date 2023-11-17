@@ -11,10 +11,11 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author Vespertino
+ * @author manuelmsni
  */
 public class Ej2 {
-    public static void main(String[] args){
+        public static void main(String[] args){
+        BufferedReader reader = null;
         try {
             
             String[] input = {"ipconfig"};
@@ -22,7 +23,7 @@ public class Ej2 {
 
             
             InputStream inputStream = process.getInputStream(); // Obtiene el flujo de salida del proceso
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream)); // 
+            reader = new BufferedReader(new InputStreamReader(inputStream)); // 
 
             String line;
             while ((line = reader.readLine()) != null) { // Lee y muestra la salida del proceso
@@ -32,6 +33,12 @@ public class Ej2 {
             process.waitFor(); // Espera a que termine el proceso
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

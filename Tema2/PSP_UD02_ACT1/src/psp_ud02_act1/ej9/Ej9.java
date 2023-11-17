@@ -49,6 +49,12 @@ public class Ej9 {
             }
         } catch (IOException ex) {
             ex.printStackTrace();
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
         
         System.out.println("Soy el proceso ABUELO " + miPid + "; Mi hijo: " + padrePid + " terminó.");

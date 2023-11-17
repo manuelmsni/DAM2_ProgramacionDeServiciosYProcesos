@@ -9,12 +9,15 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 /**
  *
  * @author manuelmsni
  */
 public class Ej11 {
+    
     public static void main(String[] args) {
         generarArchivoPrueba();
         try {
@@ -24,27 +27,69 @@ public class Ej11 {
 
             // Itera sobre cada línea del archivo
             while ((linea = br.readLine()) != null) {
-                try {
-                    // Crea un proceso para ejecutar la instrucción
-                    ProcessBuilder processBuilder = new ProcessBuilder(linea.split("\\s+"));
-                    Process proceso = processBuilder.start();
-
-                    // Espera a que el proceso termine
-                    int exitCode = proceso.waitFor();
-
-                    // Muestra la salida del proceso
-                    if (exitCode == 0) {
-                        System.out.println("Instrucción ejecutada correctamente: " + linea);
-                    }
-                } catch (IOException | InterruptedException ex) {
-                    System.out.println("Error al ejecutar la instrucción: " + linea);
-                }
+                ejecutarProcesoForma2(linea);
             }
 
             // Cierra el BufferedReader
             br.close();
 
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private static void ejecutarProcesoForma1(String instruccion) {
+        try {
+            // Crea un proceso para ejecutar la instrucción
+            ProcessBuilder processBuilder = new ProcessBuilder(instruccion.split("\\s+"));
+            Process proceso = processBuilder.start();
+
+            // Espera a que el proceso termine
+            int exitCode = proceso.waitFor();
+
+            // Muestra la salida del proceso
+            if (exitCode == 0) {
+                System.out.println("Instrucción ejecutada correctamente: " + instruccion);
+            }
+        } catch (IOException | InterruptedException ex) {
+            System.out.println("Error al ejecutar la instrucción: " + instruccion);
+        }
+    }
+    private static void ejecutarProcesoForma2(String instruccion) {
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder(instruccion.split("\\s+"));
+            Process proceso = processBuilder.start();
+
+            // Capturar la salida estándar
+            InputStream inputStream = proceso.getInputStream();
+            BufferedReader inputReader = new BufferedReader(new InputStreamReader(inputStream));
+
+            // Capturar la salida de error
+            InputStream errorStream = proceso.getErrorStream();
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(errorStream));
+
+            // Leer y mostrar la salida estándar
+            String line;
+            while ((line = inputReader.readLine()) != null) {
+                System.out.println("Salida estándar: " + line);
+            }
+
+            // Leer y mostrar la salida de error
+            while ((line = errorReader.readLine()) != null) {
+                System.err.println("Salida de error: " + line);
+            }
+
+            // Esperar a que el proceso termine
+            int exitCode = proceso.waitFor();
+
+            if (exitCode == 0) {
+                System.out.println("Instrucción ejecutada con éxito: " + instruccion);
+            } else {
+                System.err.println("Error al ejecutar la instrucción: " + instruccion);
+            }
+
+        } catch (IOException | InterruptedException e) {
+            System.err.println("Error al ejecutar la instrucción: " + instruccion);
             e.printStackTrace();
         }
     }

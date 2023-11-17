@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -132,6 +134,8 @@ public class Ej4_GUI extends javax.swing.JFrame {
     }
     
     private void executeCommand(String... command) {
+        Scanner scanner = null;
+        BufferedWriter writer = null;
         try {
             ProcessBuilder pb = new ProcessBuilder(command);
             pb.redirectErrorStream(true);
@@ -139,7 +143,7 @@ public class Ej4_GUI extends javax.swing.JFrame {
 
             // Leer la salida del proceso
             InputStream inputStream = process.getInputStream();
-            Scanner scanner = new Scanner(new InputStreamReader(inputStream));
+            scanner = new Scanner(new InputStreamReader(inputStream));
             StringBuilder output = new StringBuilder();
             while (scanner.hasNext()) {
                 String line = scanner.nextLine();
@@ -148,7 +152,8 @@ public class Ej4_GUI extends javax.swing.JFrame {
 
             // Guardar la salida en un archivo
             String outputPath = "outputEj3.txt";
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
+            try{
+                writer = new BufferedWriter(new FileWriter(outputPath));
                 writer.write(output.toString());
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -156,9 +161,17 @@ public class Ej4_GUI extends javax.swing.JFrame {
 
             // Notificar que la ejecución ha terminado
             JOptionPane.showMessageDialog(this, "Comando ejecutado.\nLa salida se ha guardado en " + outputPath);
-
+            
+            
         } catch (IOException ex) {
             ex.printStackTrace();
+        } finally{
+            try {
+                scanner.close();
+                writer.close();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
     

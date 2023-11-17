@@ -79,6 +79,7 @@ public class Ej3_GUI extends javax.swing.JFrame {
     }
     
     private void executeCommand(String... command) {
+        BufferedWriter writer = null;
         try {
             ProcessBuilder pb = new ProcessBuilder(command);
             pb.redirectErrorStream(true);
@@ -95,7 +96,8 @@ public class Ej3_GUI extends javax.swing.JFrame {
 
             // Guardar la salida en un archivo
             String outputPath = "outputEj3.txt";
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(outputPath))) {
+            try {
+                writer = new BufferedWriter(new FileWriter(outputPath));
                 writer.write(output.toString());
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -106,6 +108,12 @@ public class Ej3_GUI extends javax.swing.JFrame {
 
         } catch (IOException ex) {
             ex.printStackTrace();
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
     

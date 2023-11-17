@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,20 +18,26 @@ import java.nio.file.StandardOpenOption;
 public class Ej10 {
     public static void main(String[] args) {
         try {
-            // Ejecutar el comando para obtener los servicios bajo svchost.exe
-            ProcessBuilder processBuilder = new ProcessBuilder("tasklist", "/svc", "/fi", "imagename eq svchost.exe");
+            // Comando para obtener los servicios bajo svchost.exe en Windows
+            String comando = "tasklist /FI \"IMAGENAME eq svchost.exe\" /SVC | findstr /i \"svchost.exe\" > SVCHOST.TXT";
+            
+            // Crear un proceso para ejecutar el comando
+            ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", comando);
+            
+            // Redirigir la salida a un archivo
+            processBuilder.redirectErrorStream(true);
+            
+            // Ejecutar el proceso
             Process process = processBuilder.start();
-
-            // Leer la salida del proceso
-            String servicios = new String(process.getInputStream().readAllBytes());
-
-            // Guardar la lista de servicios en un archivo
-            Path archivo = Path.of("SVCHOST.TXT");
-            Files.write(archivo, servicios.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
-
-            System.out.println("Servicios guardados en SVCHOST.TXT");
+            
+            // Esperar a que el proceso termine
+            process.waitFor();
+            
+            System.out.println("Servicios de svchost.exe guardados en SVCHOST.TXT");
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
         }
     }
 }
