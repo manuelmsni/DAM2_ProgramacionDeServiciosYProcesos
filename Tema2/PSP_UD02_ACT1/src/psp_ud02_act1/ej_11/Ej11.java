@@ -98,7 +98,7 @@ public class Ej11 {
             "cmd /c echo Hola Mundo",
             "mondongo",
             "cmd /c dir",
-            "java -version",
+            "java -version"
         };
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("instrucciones.txt"))) {
